@@ -1,0 +1,109 @@
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+[tool.poetry]
+name = "django-gitlab-webhooks"
+version = "1.0.0"
+description = "Gitlab webhooks for Django."
+authors = ["stefanitsky <stefanitsky.mozdor@gmail.com>"]
+readme = "README.rst"
+license = "MIT"
+repository = "https://github.com/OpenWiden/django-gitlab-webhooks"
+documentation = "https://django-gitlab-webhooks.readthedocs.io/en/latest/"
+keywords = ["django"]
+classifiers = [
+    "Framework :: Django :: 2.1",
+    "Framework :: Django :: 3.0",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+packages = [{ include = "gitlab_webhooks" }]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+django = "^2.2 || ^3.0"
+tox = { version = "< 3.8", optional = true }
+pytest = { version = "^5.2", optional = true }
+pytest-django = { version = "^3.9.0", optional = true }
+pytest-cov = { version = "^2.1.0", optional = true }
+sphinx = { version = "^3", optional = true }
+black = { version = "^19.10b0", optional = true }
+isort = { version = "^5.1.2", extras = ["pyproject"], optional = true }
+
+[tool.poetry.extras]
+docs = ["sphinx"]
+black = ["black"]
+isort = ["isort"]
+test = ["pytest", "pytest-django", "pytest-cov"]
+dev = ["tox", "pytest", "pytest-django", "pytest-cov", "sphinx", "black", "isort"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | htmlcov
+    | env
+    | buck-out
+    | build
+    | dist
+    | migrations
+  )/
+  | /__init__\.py
+)
+'''
+
+[tool.isort]
+line_length = 88
+multi_line_output = 3
+include_trailing_comma = true
+use_parentheses = true
+default_section = "FIRSTPARTY"
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+isolated_build = True
+envlist = {py37,py38}-django{21,30},black,docs,isort
+
+[tox:.package]
+basepython = python3
+
+[gh-actions]
+python =
+    3.7: py37
+    3.8: py38
+
+[testenv]
+deps =
+    django21: Django>=2.1,<2.2
+    django30: Django>=3,<3.1
+extras = test
+commands = pytest --cov=gitlab_webhooks --cov-report=xml
+
+[testenv:black]
+extras = black
+basepython = python3.8
+commands = black --check .
+
+[testenv:docs]
+extras = docs
+basepython = python3.8
+commands = sphinx-build -W -b html -d {envtmpdir}/docs docs {envtmpdir}/docs/_build
+
+[testenv:isort]
+extras = isort
+basepython = python3.8
+commands = isort . --check-only
+"""
