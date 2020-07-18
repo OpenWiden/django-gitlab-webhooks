@@ -5,8 +5,8 @@ django-gitlab-webhooks
     :target: https://github.com/OpenWiden/django-gitlab-webhooks/actions
     :alt: Build
 
-.. image:: https://codecov.io/gh/stefanitsky/django-gitlab-webhooks/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/stefanitsky/django-gitlab-webhooks
+.. image:: https://codecov.io/gh/OpenWiden/django-gitlab-webhooks/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/OpenWiden/django-gitlab-webhooks
     :alt: Coverage
 
 .. image:: https://readthedocs.org/projects/django-gitlab-webhooks/badge/?version=latest
