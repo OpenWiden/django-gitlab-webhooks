@@ -14,3 +14,5 @@ django-gitlab-webhooks
     :alt: Docs
 
 Gitlab webhooks for Django.
+
+Docs: https://django-gitlab-webhooks.readthedocs.io/en/latest/
