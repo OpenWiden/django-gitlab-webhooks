@@ -39,16 +39,14 @@ class WebhookView(View):
         # Validate webhook secret
         if request.META.get(constants.TOKEN_HEADER) != self.get_secret():
             return JsonResponse(
-                {"detail": constants.INVALID_HTTP_X_GITLAB_TOKEN},
-                status=400,
+                {"detail": constants.INVALID_HTTP_X_GITLAB_TOKEN}, status=400,
             )
 
         # Check event header
         event = request.META.get(constants.EVENT_HEADER)
         if event is None:
             return JsonResponse(
-                {"detail": constants.EVENT_HEADER_IS_MISSING},
-                status=400,
+                {"detail": constants.EVENT_HEADER_IS_MISSING}, status=400,
             )
 
         # Validate that event is allowed
