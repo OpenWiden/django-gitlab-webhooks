@@ -3,7 +3,6 @@ from typing import List
 
 from django.utils.translation import gettext_lazy as _
 
-
 # Headers
 TOKEN_HEADER = "HTTP_X_GITLAB_TOKEN"
 EVENT_HEADER = "HTTP_X_GITLAB_EVENT"

@@ -3,8 +3,8 @@ import json
 import pytest
 from django.core.exceptions import ImproperlyConfigured
 from django.test import RequestFactory
-from gitlab_webhooks.views import WebhookView
 from gitlab_webhooks import constants
+from gitlab_webhooks.views import WebhookView
 
 
 class TestWebhookView:

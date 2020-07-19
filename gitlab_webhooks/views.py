@@ -3,9 +3,9 @@ import json
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.dispatch import Signal
+from django.http import HttpRequest, JsonResponse
 from django.utils.decorators import method_decorator
 from django.views import View
-from django.http import HttpRequest, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from . import constants, signals
