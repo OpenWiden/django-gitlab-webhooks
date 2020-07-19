@@ -4,7 +4,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "django-gitlab-webhooks"
-version = "1.0.0"
+version = "0.1.0"
 description = "Gitlab webhooks for Django."
 authors = ["stefanitsky <stefanitsky.mozdor@gmail.com>"]
 readme = "README.rst"
