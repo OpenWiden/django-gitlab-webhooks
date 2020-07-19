@@ -1,3 +1,4 @@
 SECRET_KEY = "test_key"
-GITLAB_WEBHOOKS = {}
+DJANGO_GITLAB_WEBHOOKS = {"SECRET": "fake_secret"}
 ROOT_URLCONF = "gitlab_webhooks.urls"
+INSTALLED_APPS = ("gitlab_webhooks",)
