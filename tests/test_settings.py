@@ -8,12 +8,12 @@ def test_load_settings_success():
 
 
 def test_missed_settings(settings):
-    del settings.GITLAB_WEBHOOKS
+    del settings.DJANGO_GITLAB_WEBHOOKS
     with pytest.raises(ImproperlyConfigured):
         app_settings.load_settings()
 
 
 def test_settings_is_not_a_dict(settings):
-    settings.GITLAB_WEBHOOKS = list()
+    settings.DJANGO_GITLAB_WEBHOOKS = list()
     with pytest.raises(ImproperlyConfigured):
         app_settings.load_settings()
